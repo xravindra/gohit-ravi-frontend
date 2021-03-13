@@ -18,7 +18,7 @@ const Login = () => {
   function handleSubmitClick() {
     fetch('https://intense-earth-21330.herokuapp.com/')
       .then((resp) => {
-        console.log("handleSubmitClick -> resp", resp);
+        console.log("====>", resp);
         if (resp.success === true) {
           alert("login successful");
         }
