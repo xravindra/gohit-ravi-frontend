@@ -16,11 +16,7 @@ const Login = () => {
   }
 
   function handleSubmitClick() {
-    fetch('https://intense-earth-21330.herokuapp.com/', {
-      headers: {
-        'Access-Control-Allow-Origin': 'no-cors',
-      }
-    })
+    fetch('https://intense-earth-21330.herokuapp.com/')
       .then((resp) => {
         console.log("handleSubmitClick -> resp", resp);
         if (resp.success === true) {
