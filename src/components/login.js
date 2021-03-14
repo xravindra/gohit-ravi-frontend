@@ -16,15 +16,19 @@ const Login = () => {
   }
 
   function handleSubmitClick() {
-    fetch('https://intense-earth-21330.herokuapp.com/')
-      .then((resp) => {
-        console.log("====>", resp);
-        if (resp.success === true) {
-          alert("login successful");
-        }
-      }, (error) => {
-        console.log(error);
+
+    fetch('https://intense-earth-21330.herokuapp.com/checklogin', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
       })
+    }).then(res => res.json())
+      .then(data => console.log(data));
   }
 
   return (
