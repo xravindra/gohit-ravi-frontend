@@ -4,8 +4,9 @@ import {
 } from "../helpers/constants";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [json, setJson] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   function handleUsernameChange(e) {
     setUsername(e.target.value);
@@ -20,7 +21,7 @@ const Login = () => {
     fetch('https://intense-earth-21330.herokuapp.com/checklogin', {
       method: 'post',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+        'Accept': '*/*',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -28,11 +29,13 @@ const Login = () => {
         password,
       })
     }).then(res => res.json())
-      .then(data => console.log('our data: ', data));
+      .then(data => setJson(JSON.stringify(data)));
   }
 
   return (
     <div className="loginPage">
+      <h1><pre>{json}</pre></h1>
+
       <br />
       login page {ProjectName}
       <br />
