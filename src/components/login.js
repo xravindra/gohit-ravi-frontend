@@ -4,9 +4,9 @@ import {
 } from "../helpers/constants";
 
 const Login = () => {
-  const [json, setJson] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [response, setResponse] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleUsernameChange(e) {
     setUsername(e.target.value);
@@ -29,12 +29,12 @@ const Login = () => {
         password,
       })
     }).then(res => res.json())
-      .then(data => setJson(JSON.stringify(data)));
+      .then(data => setResponse(JSON.stringify(data)));
   }
 
   return (
     <div className="loginPage">
-      <h1><pre>{json}</pre></h1>
+      <h1><pre>{response}</pre></h1>
 
       <br />
       login page {ProjectName}
